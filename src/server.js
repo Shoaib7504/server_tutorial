@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
 import movieRouter from "./routes/movies.route.js";
+import authRouter from "./routes/authRoutes.js";
 import { dbConnect, dbClose } from "./config/db.connect.js";
 
 const app = express()
@@ -15,7 +16,9 @@ dbConnect()
 
 //routes
 app.use('/movies',movieRouter)
-
+app.use('/auth',authRouter)
+app.use('/auth',authRouter)
+app.use('/auth',authRouter)
 
 app.get('/',(req,res)=>{
     res.json({message:'Hello World!',
