@@ -5,7 +5,7 @@ import cors from "cors";
 import movieRouter from "./routes/movies.route.js";
 import authRouter from "./routes/authRoutes.js";
 import { dbConnect, dbClose } from "./config/db.connect.js";
-
+import watchlistRouter from "./routes/addToWatchlist.js";
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -19,6 +19,7 @@ app.use('/movies',movieRouter)
 app.use('/auth',authRouter)
 app.use('/auth',authRouter)
 app.use('/auth',authRouter)
+app.use('/watchlist',watchlistRouter)
 
 app.get('/',(req,res)=>{
     res.json({message:'Hello World!',
