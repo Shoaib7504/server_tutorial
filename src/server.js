@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import movieRouter from "./routes/movies.route.js";
 import authRouter from "./routes/authRoutes.js";
 import { dbConnect, dbClose } from "./config/db.connect.js";
@@ -11,13 +12,12 @@ const port = process.env.PORT || 3000
 
 app.use(express.json())
 app.use(cors())
+app.use(cookieParser())
 
 dbConnect()
 
 //routes
 app.use('/movies',movieRouter)
-app.use('/auth',authRouter)
-app.use('/auth',authRouter)
 app.use('/auth',authRouter)
 app.use('/watchlist',watchlistRouter)
 
